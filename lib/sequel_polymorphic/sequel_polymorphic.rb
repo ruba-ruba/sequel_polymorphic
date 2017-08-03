@@ -105,7 +105,7 @@ module Sequel
             able_type              = :"#{able}_type"
             collection_singular    = singularize(collection_name.to_s).to_sym
             collection_singular_id = :"#{collection_singular}_id"
-            through_klass          = constantize(singularize(camelize(through.to_s)))
+            through_klass          = options[:through_class] || options[:join_class] || constantize(singularize(camelize(through.to_s)))
 
             association_options = {
               :left_key   => able_id,
